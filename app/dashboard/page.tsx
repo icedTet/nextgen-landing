@@ -9,6 +9,7 @@ import { RecentActivity } from "@/components/dashboard/recent-activity";
 import { QuickActions } from "@/components/dashboard/quick-actions";
 import { DollarSign, TrendingUp, Wifi, Users } from "lucide-react";
 import { ParticleSystem } from "@/components/particle-system";
+import { performanceMetrics, bandwidthStats, monthlyEarnings } from "@/lib/mock-data";
 
 export default function DashboardPage() {
   return (
@@ -39,7 +40,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatCard
             title="Total Earnings"
-            value="$1,245.50"
+            value={`$${performanceMetrics.totalEarnings.toFixed(2)}`}
             change="+12.5%"
             icon={DollarSign}
             trend="up"
@@ -47,7 +48,7 @@ export default function DashboardPage() {
           />
           <StatCard
             title="This Month"
-            value="$135.50"
+            value={`$${monthlyEarnings[monthlyEarnings.length - 1].earnings.toFixed(2)}`}
             change="+8.2%"
             icon={TrendingUp}
             trend="up"
@@ -55,7 +56,7 @@ export default function DashboardPage() {
           />
           <StatCard
             title="Bandwidth Shared"
-            value="187 GB"
+            value={`${bandwidthStats.used} GB`}
             change="+15.3%"
             icon={Wifi}
             trend="up"
@@ -63,7 +64,7 @@ export default function DashboardPage() {
           />
           <StatCard
             title="Active Nodes"
-            value="3"
+            value={bandwidthStats.activeNodes.toString()}
             change="+1"
             icon={Users}
             trend="up"

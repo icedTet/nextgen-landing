@@ -2,16 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
+import { weeklyEarnings } from "@/lib/mock-data";
 
-const mockData = [
-  { day: "Mon", earnings: 12.5 },
-  { day: "Tue", earnings: 18.2 },
-  { day: "Wed", earnings: 15.8 },
-  { day: "Thu", earnings: 22.4 },
-  { day: "Fri", earnings: 19.6 },
-  { day: "Sat", earnings: 25.3 },
-  { day: "Sun", earnings: 21.7 },
-];
+const mockData = weeklyEarnings.thisWeek;
 
 export function EarningsChart() {
   const maxEarnings = Math.max(...mockData.map((d) => d.earnings));
@@ -46,8 +39,9 @@ export function EarningsChart() {
                 whileHover={{ scale: 1.05 }}
               >
                 {/* Tooltip */}
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-primary/90 text-primary-foreground px-2 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  ${item.earnings.toFixed(2)}
+                <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-primary/90 text-primary-foreground px-3 py-2 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                  <div className="font-bold">${item.earnings.toFixed(2)}</div>
+                  <div className="text-[10px] opacity-80">{item.bandwidth.toFixed(1)} GB shared</div>
                 </div>
               </motion.div>
 

@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
+import { bandwidthStats } from "@/lib/mock-data";
 
 export function BandwidthUsage() {
-  const totalBandwidth = 250; // GB
-  const usedBandwidth = 187; // GB
+  const totalBandwidth = bandwidthStats.total;
+  const usedBandwidth = bandwidthStats.used;
   const percentage = (usedBandwidth / totalBandwidth) * 100;
 
   return (
@@ -85,15 +86,15 @@ export function BandwidthUsage() {
         <div className="space-y-2 pt-4 border-t border-border/50">
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">Upload Speed</span>
-            <span className="font-medium">12.5 Mbps</span>
+            <span className="font-medium">{bandwidthStats.uploadSpeed} Mbps</span>
           </div>
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">Download Speed</span>
-            <span className="font-medium">45.2 Mbps</span>
+            <span className="font-medium">{bandwidthStats.downloadSpeed} Mbps</span>
           </div>
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">Active Connections</span>
-            <span className="font-medium text-green-500">3 Nodes</span>
+            <span className="font-medium text-green-500">{bandwidthStats.activeNodes} Nodes</span>
           </div>
         </div>
       </div>
