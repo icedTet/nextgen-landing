@@ -9,10 +9,10 @@ import { ArrowRight, Mail, Lock, Github, Chrome, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { ThreeBackground } from "@/components/three-background";
 import { ParticleSystem } from "@/components/particle-system";
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -263,5 +263,13 @@ export default function LoginPage() {
         </motion.p>
       </motion.div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }

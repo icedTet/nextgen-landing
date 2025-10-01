@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { DollarSign, TrendingUp, Wifi, Check, Server, Trophy } from "lucide-react";
+import { DollarSign, Wifi, Check, Server, Trophy } from "lucide-react";
 import { recentActivities } from "@/lib/mock-data";
 
 // Map icon names to components
